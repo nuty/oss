@@ -49,7 +49,7 @@
     (define/override (make-headers bucket object method url)
       (define type 
         (cond 
-          [(eq? method "PUT")  "application/x-www-form-urlencoded"]
+          [(eq? method "PUT")  "multipart/form-data;application/x-www-form-urlencoded"]
           [(eq? method "DELETE")  "application/x-www-form-urlencoded"]))
 
         (list
