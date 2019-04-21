@@ -2,7 +2,7 @@
 
 一个简单的阿里云OSS SDK
 
-API不完善 **alpha stage**!
+API不完善 **刚开始写**!
 
 
 ## 安装
