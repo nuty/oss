@@ -28,7 +28,8 @@ raco pkg install https://github.com/nuty/oss.git
         (lambda (in) (read-string limit in))))
 
 
-(define content (read-file (string-join (list (path->string (current-directory)) "test.file") "")))
+(define content 
+    (read-file (string-join (list (path->string (current-directory)) "test.file") "")))
 
 (object-put oss-client "bucket" content "test.file")
 ```
