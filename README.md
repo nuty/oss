@@ -30,5 +30,5 @@ raco pkg install https://github.com/nuty/oss.git
 
 (define content (read-file (string-join (list (path->string (current-directory)) "test.file") "")))
 
-(object-put oss-client "apl-docs" content "test.file")
+(object-put oss-client "bucket" content "test.file")
 ```
