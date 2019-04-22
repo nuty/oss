@@ -8,7 +8,7 @@
 ## 安装
 
 ```
-raco pkg install https://github.com/nuty/oss.git
+raco pkg install https://github.com/nuty/racket-oss.git
 ```
 
 
