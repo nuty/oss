@@ -37,19 +37,20 @@
     (define/override (make-signature method type bucket object)
       (let 
         ([s-key (get-field access-key-secret this)])
-        (let ([sign-data (string-join (list method "\n\n" type "\n"  current-gmt-time "\n" "/" bucket "/" object) "")])
-          (bytes->string/utf-8 
-            (base64-encode 
-              (hex-string->bytes
-                (bytes->hex-string 
-                  (hmac-sha1 
-                    (string->bytes/utf-8 
-                      (get-field access-key-secret this)) (string->bytes/utf-8 sign-data)))))))))
+          (let ([sign-data (string-join (list method "\n\n" type "\n"  current-gmt-time "\n" "/" bucket "/" object) "")])
+            (bytes->string/utf-8 
+              (base64-encode
+                (hex-string->bytes
+                  (bytes->hex-string
+                    (hmac-sha1
+                      (string->bytes/utf-8
+                        (get-field access-key-secret this))
+                          (string->bytes/utf-8 sign-data)))))))))
 
     (define/override (make-headers bucket object method url)
       (define type 
         (cond 
-          [(eq? method "PUT")  "multipart/form-data;application/x-www-form-urlencoded"]
+          [(eq? method "PUT")  "application/x-www-form-urlencoded"]
           [(eq? method "DELETE")  "application/x-www-form-urlencoded"]))
 
         (list
@@ -72,9 +73,6 @@
         (displayln status)
         (displayln (port->string in))
         (close-input-port in))
-
-
-
 
     (define/override (put-object bucket content object [method "PUT"])
       (define endpoint (get-field end-point this))
