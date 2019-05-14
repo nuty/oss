@@ -23,7 +23,7 @@ raco pkg install https://github.com/nuty/racket-oss.git
     (client  "access-key-id" "access-key-secret" "end-point"))
 
 (define content 
-    (file->bytes (string-join (list (path->string (current-directory)) "test.file") "")))
+    (file->bytes (build-path "test.file")))
 
 (object-put oss-client "bucket" content "test.file")
 ```
